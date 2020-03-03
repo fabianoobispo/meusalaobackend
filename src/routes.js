@@ -16,27 +16,27 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('apimeusalao/users', UserController.store);
-routes.post('apimeusalao/sessions', SessionController.store);
+routes.post('/users', UserController.store);
+routes.post('/sessions', SessionController.store);
 
-routes.get('apimeusalao/', (req, res) => res.send('ok')),
-routes.get('apimeusalao/test', (req, res) => res.send('test')),
+routes.get('/', (req, res) => res.send('ok')),
+routes.get('/test', (req, res) => res.send('test')),
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
-routes.get('apimeusalao/providers', ProviderControllers.index);
-routes.get('apimeusalao/providers/:providerId/available', AvailableController.index);
+routes.get('/providers', ProviderControllers.index);
+routes.get('/providers/:providerId/available', AvailableController.index);
 
-routes.post('apimeusalao/appointments', AppnitmentControler.store);
-routes.get('apimeusalao/appointments', AppnitmentControler.index);
-routes.delete('apimeusalao/appointments/:id', AppnitmentControler.delete);
+routes.post('/appointments', AppnitmentControler.store);
+routes.get('/appointments', AppnitmentControler.index);
+routes.delete('/appointments/:id', AppnitmentControler.delete);
 
-routes.get('apimeusalao/schedule', ScheduleController.index);
+routes.get('/schedule', ScheduleController.index);
 
-routes.get('apimeusalao/notifications', NotificationController.index);
+routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
 
-routes.post('apimeusalao/files', upload.single('file'), FilerController.store);
+routes.post('/files', upload.single('file'), FilerController.store);
 
 export default routes;
